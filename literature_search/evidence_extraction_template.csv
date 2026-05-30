@@ -1,0 +1,9 @@
+module,claim_or_question,patient_facing_answer,technician_facing_detail,pmid_or_source,study_type,population,protocol_or_device,key_finding,caveat_or_boundary,evidence_strength,status
+Mechanisms,How does TMS work?,,,,,,,,,,unscreened
+Safety and side effects,What side effects should patients expect?,,,,,,,,,,unscreened
+Sensations,Why does stimulation feel like tapping or scalp discomfort?,,,,,,,,,,unscreened
+Adherence and state,Why keep caffeine sleep and medications consistent?,,,,,,,,,,unscreened
+Technician workflow,How should motor threshold be determined and rechecked?,,,,,,,,,,unscreened
+Technician workflow,How should the treatment target be localized?,,,,,,,,,,unscreened
+Protocol literacy,How do 10 Hz rTMS iTBS bilateral accelerated and deep TMS differ?,,,,,,,,,,unscreened
+Future expansion,What evidence supports fNIRS EEG qEEG or TMS-EEG integration?,,,,,,,,,,unscreened

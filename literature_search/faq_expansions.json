@@ -1,0 +1,820 @@
+[
+  {
+    "claim_id": "FAQ-001",
+    "expanded_patient_answer": "The tapping or pulsing feeling is usually expected. The TMS coil makes a fast magnetic pulse, and that pulse can activate nearby scalp nerves and small muscles close to the coil. That is why it can feel like rhythmic tapping, pressure, or twitching at the scalp or face. It is not meant to burn tissue or send electricity through the scalp. The important boundary is that expected tapping should stay tolerable and familiar; sharp, escalating, unusual, or spreading pain should be reported right away.",
+    "why_it_matters": "This question often comes up in the first few minutes of treatment. A calm explanation prevents patients from interpreting every sensation as injury while still preserving active safety monitoring.",
+    "technician_evidence_note": "Safety guidelines describe local pain, scalp discomfort, facial muscle activation, and headache as common tolerability issues. Technician training should distinguish expected peripheral nerve or muscle activation from severe pain, new neurological symptoms, syncope, or seizure concern.",
+    "technician_checklist": [
+      "Normalize expected tapping before stimulation begins.",
+      "Ask whether the sensation is tolerable, sharp, escalating, or different from the prior session.",
+      "Check coil contact, angle, target stability, and clinic-approved comfort options before assuming the patient should simply tolerate pain."
+    ],
+    "follow_ups": [
+      {
+        "question": "Is the tapping damaging my brain or scalp?",
+        "answer": "No. The expected tapping feeling is usually from nerves and muscles near the coil responding to the pulse. Tell us if it becomes painful, sharp, or different from usual so we can assess it.",
+        "route_when": "Escalate severe, unusual, persistent, or neurologic symptoms."
+      },
+      {
+        "question": "Why does my eyebrow or face move?",
+        "answer": "Small facial or scalp movements can happen because superficial nerves and muscles are close to the stimulation area. We still want to know if the movement changes, hurts, or feels unusual.",
+        "route_when": "Review setup if movement is excessive, new, or suggests coil drift."
+      },
+      {
+        "question": "Can you make the tapping less uncomfortable?",
+        "answer": "Tell us what you are feeling. We can check positioning and use clinic-approved comfort steps, while keeping the treatment within the prescribed protocol.",
+        "route_when": "Route persistent intolerance or requests for dose changes to the clinician."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552"
+    ]
+  },
+  {
+    "claim_id": "FAQ-002",
+    "expanded_patient_answer": "The most practical advice is to keep caffeine consistent rather than trying to optimize it. Caffeine can affect brain excitability, and emerging TMS studies suggest caffeine habits may interact with measures of plasticity or outcomes, but the evidence does not define a universal best dose. If you normally drink coffee or tea, aim for your usual amount at roughly your usual time. Avoid suddenly adding a lot, stopping abruptly, or changing late-day caffeine in a way that disrupts sleep unless your clinician advises it.",
+    "why_it_matters": "Patients often convert 'caffeine matters' into 'I should quit' or 'I should drink more before TMS.' The evidence supports consistency language, not caffeine manipulation.",
+    "technician_evidence_note": "Recent studies include a naturalistic clinical outcomes analysis and mechanistic/plasticity work. Taken together, they justify documenting major caffeine changes and avoiding abrupt routine shifts, but not prescribing a caffeine dose.",
+    "technician_checklist": [
+      "Ask about major caffeine changes, not just whether the patient uses caffeine.",
+      "Document unusual intake, withdrawal, late-day use, anxiety, headache, or sleep disruption.",
+      "Do not advise starting, stopping, or increasing caffeine to improve treatment response."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can I drink coffee before my appointment?",
+        "answer": "If coffee is part of your usual routine, keep it about the same unless your clinician tells you otherwise. The main goal is not to make big day-to-day changes.",
+        "route_when": "Escalate if caffeine use is tied to palpitations, severe anxiety, sleep loss, or clinician restrictions."
+      },
+      {
+        "question": "What if I had much more caffeine than usual today?",
+        "answer": "Tell us before treatment. It does not automatically mean treatment cannot happen, but we should document it and check whether you feel unusually anxious, shaky, sleep-deprived, or unwell.",
+        "route_when": "Escalate marked symptoms or major state changes according to clinic policy."
+      },
+      {
+        "question": "Should I quit caffeine during the course?",
+        "answer": "Do not quit only for TMS unless your clinician recommends it. Abrupt withdrawal can cause headache, fatigue, and sleep or mood changes, which can make the treatment course harder to interpret.",
+        "route_when": "Route medication, withdrawal, cardiovascular, or severe anxiety questions to clinical staff."
+      }
+    ],
+    "evidence_pmids": [
+      "41346487",
+      "36911138",
+      "34872405"
+    ]
+  },
+  {
+    "claim_id": "FAQ-003",
+    "expanded_patient_answer": "Sleep matters because it can affect mood, attention, seizure threshold, and the brain state being stimulated. The evidence does not give one sleep-hour cutoff that applies to every patient, but very poor sleep or an all-nighter is worth reporting before treatment. The goal is not perfect sleep; it is a stable routine and honest reporting so the team can decide whether anything needs review.",
+    "why_it_matters": "Sleep is both a safety screen and a state-dependence issue. Technicians should avoid sounding punitive while still treating sleep deprivation as clinically relevant.",
+    "technician_evidence_note": "A recent systematic review/meta-analysis summarizes TMS measures of cortical excitability after sleep deprivation and notes inconsistent but meaningful neurophysiological effects. Safety guidelines also treat sleep loss as one factor that can modify risk context.",
+    "technician_checklist": [
+      "Ask whether sleep was usual, shortened, or essentially absent.",
+      "Document all-nighters, major insomnia, medication/substance changes, and unusual daytime impairment.",
+      "Escalate severe sleep deprivation when combined with other seizure-threshold or safety concerns."
+    ],
+    "follow_ups": [
+      {
+        "question": "Should I cancel if I slept badly?",
+        "answer": "Call or tell us before treatment. Poor sleep does not always mean canceling, but the team should know so they can assess safety and document the change.",
+        "route_when": "Escalate all-night sleep loss, confusion, intoxication, withdrawal, or new neurologic symptoms."
+      },
+      {
+        "question": "Can I nap before or after treatment?",
+        "answer": "A normal nap is usually just part of your routine. What matters most is telling us about major changes, extreme fatigue, or sleep loss that is not typical for you.",
+        "route_when": "Route excessive sedation or sudden change in alertness to clinical staff."
+      },
+      {
+        "question": "Does better sleep make TMS work better?",
+        "answer": "Good sleep supports mood and day-to-day stability, but we should not promise that one sleep change will make TMS work. We focus on consistency and reporting meaningful changes.",
+        "route_when": "Avoid individualized behavioral prescriptions beyond clinic-approved education."
+      }
+    ],
+    "evidence_pmids": [
+      "39756660",
+      "33243615"
+    ]
+  },
+  {
+    "claim_id": "FAQ-004",
+    "expanded_patient_answer": "Take prescribed medications the way your prescriber instructed unless that prescriber changes the plan. For TMS, medication changes matter because some medicines and substances can affect seizure threshold, cortical excitability, sleep, anxiety, or symptoms. The technician's role is to document changes and route questions to the clinical team, not to tell you to stop, start, or adjust medicine.",
+    "why_it_matters": "Medication questions are high-frequency and high-risk because patients may infer that changing medications could improve stimulation response.",
+    "technician_evidence_note": "Safety and consensus recommendations emphasize medication and seizure-threshold review. Evidence about specific medication classes and TMS outcomes can be mixed, so the operational rule is documentation and prescriber review.",
+    "technician_checklist": [
+      "Ask about started, stopped, missed, dose-changed, or as-needed medication use.",
+      "Pay attention to benzodiazepines, anticonvulsants, stimulants, sleep medicines, substances, and medications affecting seizure threshold.",
+      "Never give medication-change advice; route to the prescriber."
+    ],
+    "follow_ups": [
+      {
+        "question": "What if I forgot a dose today?",
+        "answer": "Tell us what happened and which medication it was. We will document it and follow the clinic's process for deciding whether the prescriber needs to review it.",
+        "route_when": "Escalate missed antiseizure, sedative, psychiatric, or other clinically important medications per clinic policy."
+      },
+      {
+        "question": "Can I take pain medicine before treatment?",
+        "answer": "Medication questions should go to your prescriber or the clinic's clinical staff. We can document what you usually take and what changed.",
+        "route_when": "Route all individualized medication recommendations to licensed clinical staff."
+      },
+      {
+        "question": "I started a new medication. Can I still treat today?",
+        "answer": "Tell us before the session. A new medication does not automatically stop treatment, but it may need clinician review because it can affect safety, sleep, or symptoms.",
+        "route_when": "Escalate any new medication, dose change, withdrawal, or concerning side effect."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "28541649"
+    ]
+  },
+  {
+    "claim_id": "FAQ-005",
+    "expanded_patient_answer": "A missed session does not mean the entire course has failed, but TMS courses are scheduled as repeated treatments for a reason. Call the clinic rather than trying to solve it yourself. The treatment team may reschedule, extend the course, or ask the prescriber to review the plan depending on the protocol, how many sessions were missed, and where you are in treatment.",
+    "why_it_matters": "Patients may either panic after one missed session or assume makeups are casual. The technician needs a clinic-specific scheduling and escalation script.",
+    "technician_evidence_note": "Consensus recommendations describe treatment as a course with repeated sessions, while exact makeup, extension, taper, and retreatment procedures remain clinic- and order-dependent.",
+    "technician_checklist": [
+      "Document date, reason, number of missed sessions, and where the patient is in the course.",
+      "Use local rules for makeups, extensions, reauthorization, or prescriber review.",
+      "Do not double up or alter session spacing unless explicitly allowed by protocol and order."
+    ],
+    "follow_ups": [
+      {
+        "question": "Did I ruin my progress by missing one day?",
+        "answer": "One missed day does not automatically erase progress. Let the clinic know so the team can keep your course organized and decide whether anything needs to be adjusted.",
+        "route_when": "Escalate repeated missed sessions, long gaps, or symptom worsening."
+      },
+      {
+        "question": "Can I do two sessions tomorrow to catch up?",
+        "answer": "Only if the treatment team specifically schedules that within an approved protocol. Do not assume sessions can be doubled up.",
+        "route_when": "Route all accelerated or makeup scheduling decisions through clinic protocol."
+      },
+      {
+        "question": "What if I have travel or work conflicts?",
+        "answer": "Tell the clinic as early as possible. Planning ahead gives the team more options for scheduling and documentation.",
+        "route_when": "Escalate gaps that may affect authorization, protocol fidelity, or prescriber plan."
+      }
+    ],
+    "evidence_pmids": [
+      "28541649",
+      "27090022"
+    ]
+  },
+  {
+    "claim_id": "FAQ-006",
+    "expanded_patient_answer": "Improvement timing varies. Some people notice changes early, while others need several weeks or a full course before the treatment team can judge response. Early nonresponse does not prove the treatment has failed, and early improvement does not mean the plan should be changed without clinician input. Rating scales and clinician review are used because day-to-day mood can fluctuate.",
+    "why_it_matters": "This is a core expectation-setting script. Technicians should support adherence and symptom tracking without promising response or interpreting the patient's trajectory independently.",
+    "technician_evidence_note": "Large depression trials and consensus statements evaluate response over a defined course. Response timing differs across protocol, diagnosis, baseline severity, concurrent treatment, and accelerated approaches.",
+    "technician_checklist": [
+      "Use neutral language: many patients need multiple weeks, and individual timing varies.",
+      "Encourage honest rating-scale completion rather than trying to please staff.",
+      "Escalate worsening depression, suicidality, mania symptoms, or functional deterioration."
+    ],
+    "follow_ups": [
+      {
+        "question": "What if I do not feel better yet?",
+        "answer": "Keep reporting symptoms honestly. Many courses are judged over multiple weeks, and the clinician will review your progress using rating scales and clinical information.",
+        "route_when": "Escalate significant worsening or urgent psychiatric symptoms immediately."
+      },
+      {
+        "question": "If I feel better early, does that mean I am done?",
+        "answer": "Feeling better is encouraging, but treatment changes should be discussed with the prescriber. The course is designed around a treatment plan, not a single good day.",
+        "route_when": "Route early-stop or maintenance questions to the clinician."
+      },
+      {
+        "question": "How will the team know if it is working?",
+        "answer": "The team looks at symptom scales, your reports, functioning, tolerability, and clinician assessment rather than one informal impression.",
+        "route_when": "Keep technicians from interpreting response beyond assigned screening and documentation."
+      }
+    ],
+    "evidence_pmids": [
+      "17573044",
+      "28541649",
+      "27090022"
+    ]
+  },
+  {
+    "claim_id": "FAQ-007",
+    "expanded_patient_answer": "Alcohol, cannabis, and other substances should be reported because they can affect sleep, mood, alertness, seizure threshold, anxiety, and how you feel during treatment. The safest general message is consistency and honesty with the treatment team, not hiding use or making abrupt changes. Specific abstinence rules can differ by clinic, diagnosis, medication plan, and safety policy.",
+    "why_it_matters": "Substance questions can become judgment-laden. The technician script should be neutral, safety-focused, and clear that intoxication or withdrawal concerns may change same-day treatment decisions.",
+    "technician_evidence_note": "Safety guidelines treat substances, medications, sleep loss, and neurologic history as part of risk context. Direct evidence for specific cannabis or alcohol rules in TMS is less standardized, so local policy matters.",
+    "technician_checklist": [
+      "Ask in a neutral way about intoxication, withdrawal, and major changes from baseline.",
+      "Document substance type, timing, amount when relevant, and visible impairment.",
+      "Escalate intoxication, withdrawal concern, severe anxiety, sleep loss, or safety-relevant changes before stimulation."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can I have a drink during the course?",
+        "answer": "Follow your clinic's policy and your clinician's advice. Tell us about changes, especially heavy use, withdrawal symptoms, or sleep disruption.",
+        "route_when": "Route individualized alcohol guidance to clinical staff."
+      },
+      {
+        "question": "What if I used cannabis before coming in?",
+        "answer": "Please tell us before treatment. The team needs to know whether you feel impaired, anxious, unusually sleepy, or different from your usual state.",
+        "route_when": "Escalate intoxication, impairment, panic, or safety concerns."
+      },
+      {
+        "question": "Will I get in trouble if I report substance use?",
+        "answer": "The purpose is safety, not judgment. Accurate information helps the team decide whether treatment conditions are stable and safe.",
+        "route_when": "Keep tone nonpunitive; follow mandated safety policies when applicable."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552"
+    ]
+  },
+  {
+    "claim_id": "FAQ-008",
+    "expanded_patient_answer": "Discomfort is not a sign that the treatment is working better. TMS has to be delivered accurately and at the prescribed intensity, but more pain does not mean more benefit. Tell the technician about pain, sharp sensations, headache, or anxiety so the team can check positioning, tolerability, and clinic-approved comfort options.",
+    "why_it_matters": "Some patients try to endure excessive pain because they believe intensity equals efficacy. That can reduce adherence and hide setup or tolerability problems.",
+    "technician_evidence_note": "Consensus and safety sources emphasize protocol fidelity, tolerability, and adverse-event monitoring. Efficacy should not be inferred from pain intensity.",
+    "technician_checklist": [
+      "Ask patients to rate discomfort and describe quality, not just yes/no pain.",
+      "Check target, contact, angle, head position, and protocol-approved ramping or pauses.",
+      "Document tolerability and escalate persistent or unusual pain."
+    ],
+    "follow_ups": [
+      {
+        "question": "If it hurts less, is the treatment weaker?",
+        "answer": "Not necessarily. The treatment dose and target are determined by the protocol, not by how much pain you feel.",
+        "route_when": "Reassure without implying dose changes are optional."
+      },
+      {
+        "question": "Can you lower the intensity?",
+        "answer": "Tell us what you are feeling. Any intensity changes have to follow the prescribed protocol and clinic rules, so we may need clinician input.",
+        "route_when": "Route requests for dose changes or persistent intolerance to clinical staff."
+      },
+      {
+        "question": "Should I just push through pain?",
+        "answer": "No. Please report pain. We want treatment to be tolerable and safe while still following the prescribed plan.",
+        "route_when": "Stop and assess severe, unusual, or escalating pain."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "28541649"
+    ]
+  },
+  {
+    "claim_id": "FAQ-009",
+    "expanded_patient_answer": "The repeated questions are not busywork. They check whether something changed since the last session that could matter for safety, tolerability, or interpretation of symptoms. Sleep, medications, substances, new medical events, mood changes, and pregnancy status can all change the treatment-day picture. The questions are repeated because the answer can change from one day to the next.",
+    "why_it_matters": "Patients can become fatigued by screening. Framing the questions as active safety work improves cooperation and accuracy.",
+    "technician_evidence_note": "Safety recommendations and TMS screening tools support structured screening for contraindications and changing risk factors. Local daily checklist content should be standardized and documented.",
+    "technician_checklist": [
+      "Explain the reason for daily repetition in one sentence.",
+      "Ask the checklist consistently rather than from memory.",
+      "Escalate positive answers according to the written protocol."
+    ],
+    "follow_ups": [
+      {
+        "question": "Nothing changed. Do I still have to answer?",
+        "answer": "Yes, because confirming that nothing changed is part of the safety check. It helps keep each session consistent and documented.",
+        "route_when": "Keep the workflow brief but complete."
+      },
+      {
+        "question": "What happens if I answer yes?",
+        "answer": "It does not automatically mean treatment stops. It means we may document it, ask a few clarifying questions, or have the clinical team review it.",
+        "route_when": "Escalate positive safety answers per clinic policy."
+      },
+      {
+        "question": "Why do you ask about things that seem unrelated?",
+        "answer": "Some things that seem unrelated, like sleep, medication changes, or fainting, can affect safety or how the treatment day is interpreted.",
+        "route_when": "Use this to reinforce honesty and scope boundaries."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "11332408"
+    ]
+  },
+  {
+    "claim_id": "FAQ-010",
+    "expanded_patient_answer": "Between sessions, report anything medically significant or unusual. That includes new seizure-like events, fainting, loss of consciousness, severe or unusual headache, new neurological symptoms, medication changes, substance changes, pregnancy status changes, unusually elevated mood or decreased need for sleep, and worsening suicidal thoughts. Emergencies should be handled as emergencies, not saved for the next appointment.",
+    "why_it_matters": "This FAQ should become a patient onboarding script and a technician escalation map. It is broader than routine side-effect documentation.",
+    "technician_evidence_note": "Safety guidelines and depression consensus recommendations support active monitoring for neurologic, medical, medication, and psychiatric risk changes. Suicidality and manic symptoms require urgent pathways.",
+    "technician_checklist": [
+      "Give patients a concrete list of reportable changes.",
+      "Separate next-session reporting from emergency symptoms that need immediate help.",
+      "Document who was notified and what instructions were given by clinical staff."
+    ],
+    "follow_ups": [
+      {
+        "question": "Who do I contact after hours?",
+        "answer": "Use the clinic's after-hours instructions. If symptoms feel urgent or unsafe, seek emergency help rather than waiting for the next TMS session.",
+        "route_when": "Customize to clinic crisis and after-hours policy."
+      },
+      {
+        "question": "Should I report pregnancy or a possible pregnancy?",
+        "answer": "Yes. It may not automatically rule out treatment, but it needs clinician review and documentation.",
+        "route_when": "Escalate pregnancy status changes to the prescriber or medical director."
+      },
+      {
+        "question": "What if suicidal thoughts get worse?",
+        "answer": "Tell the clinic immediately and use emergency or crisis resources if there is urgent risk. Do not wait for the next scheduled treatment.",
+        "route_when": "Follow the clinic's suicide-risk pathway immediately."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "28541649"
+    ]
+  },
+  {
+    "claim_id": "FAQ-011",
+    "expanded_patient_answer": "Feeling better is important, but stopping early should be a clinician decision. Standard TMS courses are planned around repeated dosing and measured response. The team may want to confirm improvement with rating scales, discuss relapse prevention, or decide whether the course, taper, maintenance, or retreatment plan should change. Do not stop or skip sessions without talking with the treatment team.",
+    "why_it_matters": "Early improvement can lead to nonadherence. The technician should celebrate progress while firmly routing treatment-plan changes to the clinician.",
+    "technician_evidence_note": "Consensus statements support course-based treatment and clinician-directed planning. Maintenance, taper, and retreatment schedules are less standardized and highly clinic-dependent.",
+    "technician_checklist": [
+      "Acknowledge improvement without changing the plan.",
+      "Route early-stop, taper, maintenance, or relapse-prevention questions to the prescriber.",
+      "Keep symptom-scale documentation objective."
+    ],
+    "follow_ups": [
+      {
+        "question": "If I am in remission, why continue?",
+        "answer": "That is a good clinician question. The team may want to complete the planned course or adjust the plan based on your measured response and risk of relapse.",
+        "route_when": "Route to prescriber."
+      },
+      {
+        "question": "Can I switch to maintenance sessions?",
+        "answer": "Maintenance plans are individualized. The technician can document the question and make sure the clinical team reviews it.",
+        "route_when": "Route to clinician and payer/coverage workflow if relevant."
+      },
+      {
+        "question": "What if I want to stop because of side effects?",
+        "answer": "Tell us what you are experiencing. The clinical team can review tolerability, safety, and treatment options rather than having you stop without a plan.",
+        "route_when": "Escalate side effects and adherence risk."
+      }
+    ],
+    "evidence_pmids": [
+      "28541649",
+      "27090022"
+    ]
+  },
+  {
+    "claim_id": "FAQ-012",
+    "expanded_patient_answer": "Feeling anxious during treatment is common, especially early on or when the sensations are unfamiliar. Anxiety does not mean you are doing anything wrong. Tell the technician what you are feeling so they can coach you through expected sensations, pause if clinic policy allows, and identify anything that needs clinical review. Expectations and comfort matter, but symptoms should not be dismissed as 'just anxiety.'",
+    "why_it_matters": "Anxiety can affect tolerability, adherence, and symptom interpretation. The technician script should validate the experience while avoiding overreassurance or unsupported promises.",
+    "technician_evidence_note": "Evidence on expectancy and tolerance supports careful expectation-setting, but the literature is not a substitute for safety assessment. Anxiety can coexist with real discomfort or adverse events.",
+    "technician_checklist": [
+      "Use calm, concrete descriptions of what the patient may feel.",
+      "Differentiate anxiety from severe pain, syncope, neurological symptoms, or panic requiring escalation.",
+      "Avoid telling patients that symptoms are imagined or that anxiety means treatment will fail."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can we pause if I panic?",
+        "answer": "Tell us immediately. We can follow clinic procedures for pausing, coaching, and deciding whether clinical staff should review before continuing.",
+        "route_when": "Escalate panic, dissociation, chest pain, syncope, or safety concerns."
+      },
+      {
+        "question": "Can I listen to music or use a coping tool?",
+        "answer": "Many clinics allow comfort strategies if they do not interfere with safety, positioning, hearing protection, or communication. We will follow this clinic's policy.",
+        "route_when": "Check local device, hearing-protection, and monitoring rules."
+      },
+      {
+        "question": "Should I take anxiety medication before sessions?",
+        "answer": "Medication questions need prescriber guidance. Tell us what you normally take and any changes so the clinical team can review if needed.",
+        "route_when": "Route all medication advice to the prescriber."
+      }
+    ],
+    "evidence_pmids": [
+      "41812418",
+      "42090145"
+    ]
+  },
+  {
+    "claim_id": "FAQ-013",
+    "expanded_patient_answer": "Some twitching around the scalp, forehead, eye, or face can be normal because the magnetic pulse may activate superficial nerves and muscles near the coil. It should be expected, limited, and familiar. New, excessive, painful, spreading, or limb-like movements should be reported so the technician can assess setup and safety.",
+    "why_it_matters": "Twitching is often benign but can also be a clue to coil position, tolerability, or rare safety concerns. The technician should not ignore change over time.",
+    "technician_evidence_note": "Safety sources describe local facial muscle activation and discomfort as expected TMS phenomena, while seizure-like activity, unintended generalized movement, or altered awareness requires emergency response.",
+    "technician_checklist": [
+      "Clarify location, timing, pain, and whether twitching is new or changed.",
+      "Check coil position and head stability if twitching pattern changes.",
+      "Escalate limb movement, altered awareness, confusion, or seizure-like activity immediately."
+    ],
+    "follow_ups": [
+      {
+        "question": "Is eye or eyebrow twitching normal?",
+        "answer": "It can be normal near some treatment positions because small muscles and nerves are close to the coil. Tell us if it hurts or changes from your usual pattern.",
+        "route_when": "Review setup if twitching is excessive or new."
+      },
+      {
+        "question": "What if my arm or leg moves?",
+        "answer": "Tell us immediately. Movement away from the expected scalp or face area needs assessment rather than being treated as routine.",
+        "route_when": "Escalate unexpected limb movement or altered awareness."
+      },
+      {
+        "question": "Can coil position change the twitching?",
+        "answer": "Yes. Small changes in position or angle can change which superficial nerves or muscles are activated, so we check placement carefully.",
+        "route_when": "Use this to reinforce positioning and documentation."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552"
+    ]
+  },
+  {
+    "claim_id": "FAQ-014",
+    "expanded_patient_answer": "TMS works by magnetic induction. The coil briefly generates a magnetic field that passes through the scalp and skull and induces small electric fields in nearby brain tissue. Patients may hear a click and feel tapping because the same pulse can activate scalp nerves or muscles. The treatment is not putting electricity directly through the scalp, and it is not a simple on/off switch for mood. The clinical goal is to stimulate a prescribed brain target repeatedly and safely over a course of treatment.",
+    "why_it_matters": "Patients often arrive with MRI, shock therapy, or electricity-related assumptions. A simple mechanism script reduces fear while keeping expectations realistic.",
+    "technician_evidence_note": "Safety guidelines and application guidelines describe TMS as electromagnetic induction with dose shaped by coil, intensity, orientation, target, and anatomy. Mechanism education should be accurate without promising a specific clinical effect.",
+    "technician_checklist": [
+      "Use the phrase magnetic pulse rather than electrical shock.",
+      "Pair mechanism explanation with the prescribed target and course, not a guaranteed outcome.",
+      "Escalate detailed questions about diagnosis, target selection, or expected response to the clinician."
+    ],
+    "follow_ups": [
+      {
+        "question": "Does electricity go through my scalp?",
+        "answer": "Not directly. The coil uses a magnetic pulse to induce small electrical fields in the brain tissue near the target.",
+        "route_when": "Escalate if the patient asks for individualized target, dose, or risk interpretation."
+      },
+      {
+        "question": "Is this like an MRI magnet?",
+        "answer": "Both involve magnetism, but TMS uses brief pulses from a coil near the scalp to stimulate a target. It is not an MRI scan.",
+        "route_when": "Route implant or device safety questions through the clinic's safety review process."
+      },
+      {
+        "question": "Does one pulse change my brain permanently?",
+        "answer": "The course is designed around repeated stimulation. One pulse or one session is not usually how clinical benefit is judged.",
+        "route_when": "Avoid making claims about individual response timing; route prognosis questions to clinical staff."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552"
+    ]
+  },
+  {
+    "claim_id": "FAQ-015",
+    "expanded_patient_answer": "TMS is usually prescribed as a repeated course because the intended clinical effects are expected to build across sessions. It can help to think of the schedule as repeated practice for a brain network rather than a single reset. Missing or changing sessions does not automatically erase progress, but the treatment team needs to manage the schedule so the course stays faithful to the prescription and authorization requirements.",
+    "why_it_matters": "This question drives adherence. Patients need a reason for the schedule that is motivating but not overpromising.",
+    "technician_evidence_note": "Depression consensus statements and evidence-based guidelines describe rTMS as a treatment course, often delivered repeatedly across weeks. Exact schedules vary by protocol, device, diagnosis, and prescriber order.",
+    "technician_checklist": [
+      "Explain repeated sessions as part of the prescribed dose, not clinic inconvenience.",
+      "Link attendance to protocol fidelity and accurate response tracking.",
+      "Use clinic policy for missed sessions, makeups, extensions, and prescriber review."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can I stop once I feel better?",
+        "answer": "Feeling better is important, but the treatment schedule should be changed only with the clinical team.",
+        "route_when": "Route early-stop, taper, maintenance, or discharge questions to the prescriber."
+      },
+      {
+        "question": "If I miss a week, do I restart?",
+        "answer": "That depends on the protocol, how many sessions were missed, symptoms, and clinic policy. Call the clinic so the team can decide the next step.",
+        "route_when": "Escalate long gaps, repeated missed visits, or symptom worsening."
+      },
+      {
+        "question": "Why not do all sessions in one day?",
+        "answer": "Only specific accelerated protocols use compressed schedules. Standard courses should not be compressed unless the clinician orders an approved protocol.",
+        "route_when": "Route accelerated-treatment questions to the clinician or protocol lead."
+      }
+    ],
+    "evidence_pmids": [
+      "31901449",
+      "28541649",
+      "27090022"
+    ]
+  },
+  {
+    "claim_id": "FAQ-016",
+    "expanded_patient_answer": "Motor threshold is a calibration step. The team stimulates a motor area to find the lowest intensity that reliably produces a small muscle response, often in the hand or thumb. That number helps scale the treatment dose to your nervous system on that day. It is not a mood test, a pain test, or proof that treatment is working. It can change with sleep, medications, physiology, measurement method, and equipment factors, so clinics may recheck it according to protocol.",
+    "why_it_matters": "Motor-threshold mapping can feel strange and patients often misinterpret the twitch as a diagnostic or progress test.",
+    "technician_evidence_note": "Guidelines describe motor threshold as a safety and dosing reference. Recent method papers also show that threshold estimation depends on procedure, reinforcing the need for local SOP consistency.",
+    "technician_checklist": [
+      "Explain what muscle response the patient may see before mapping starts.",
+      "Document threshold method, muscle/site, intensity, coil position, and retest triggers.",
+      "Do not interpret RMT changes as mood response or treatment success."
+    ],
+    "follow_ups": [
+      {
+        "question": "Why are you making my hand move if treatment is on my head?",
+        "answer": "The hand movement helps calibrate the stimulation intensity. Treatment may use a different target, but the motor response gives a personalized reference point.",
+        "route_when": "Escalate if movement is painful, unusual, or inconsistent with setup expectations."
+      },
+      {
+        "question": "Did my threshold change because I am getting better?",
+        "answer": "Not necessarily. Threshold is a dosing calibration measure, not a depression score.",
+        "route_when": "Route clinical-response interpretation to the clinician."
+      },
+      {
+        "question": "Why do you need to repeat mapping?",
+        "answer": "Clinics may repeat it when the protocol requires it or when factors such as medication, sleep, tolerability, or setup suggest a recheck.",
+        "route_when": "Follow local remapping rules and escalate medication or safety changes."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "41949547",
+      "42082007"
+    ]
+  },
+  {
+    "claim_id": "FAQ-017",
+    "expanded_patient_answer": "The most common TMS side effects are usually local and temporary: scalp tenderness, tapping discomfort, headache, facial or scalp twitching, and sometimes fatigue. These symptoms often improve with positioning checks, acclimation, or clinic-approved comfort steps. You should still report them, especially if they are intense, new, worsening, or different from your usual experience. Reporting side effects helps the team keep treatment tolerable and safe.",
+    "why_it_matters": "Patients need to know what is expected without feeling that they must endure severe discomfort to be a good patient.",
+    "technician_evidence_note": "Safety and consensus sources consistently describe local pain, headache, twitching, and discomfort as common tolerability issues. Documentation should separate expected transient effects from adverse events requiring clinician review.",
+    "technician_checklist": [
+      "Ask side-effect type, intensity, timing, duration, and whether it differs from prior sessions.",
+      "Check coil contact, positioning, ramping rules, and approved comfort options.",
+      "Escalate severe, unusual, neurologic, persistent, or functionally impairing symptoms."
+    ],
+    "follow_ups": [
+      {
+        "question": "Is fatigue normal after treatment?",
+        "answer": "Some patients report fatigue. Tell us how strong it is, how long it lasts, and whether it is new or worsening.",
+        "route_when": "Escalate severe sedation, confusion, fainting, or sudden change in alertness."
+      },
+      {
+        "question": "Should I push through pain?",
+        "answer": "No. Tell us if it hurts. Treatment should be tolerable and within the prescribed protocol.",
+        "route_when": "Escalate persistent intolerance or requests for unapproved dose changes."
+      },
+      {
+        "question": "Are side effects proof it is working?",
+        "answer": "No. Side effects are not a reliable sign of effectiveness. We track symptoms and response separately.",
+        "route_when": "Correct pain-equals-efficacy misconceptions and route response questions to clinicians."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "28541649",
+      "27090022"
+    ]
+  },
+  {
+    "claim_id": "FAQ-018",
+    "expanded_patient_answer": "Seizures during TMS are rare, especially when clinics follow safety guidelines, screen carefully, and use approved protocols. Rare does not mean ignored: every session includes safety checks because seizure is the serious acute event the team must be prepared for. Risk can be affected by factors such as seizure history, medications, sleep deprivation, substances, neurological conditions, and stimulation parameters. Tell the team about changes before treatment starts.",
+    "why_it_matters": "This topic requires balanced language: enough reassurance to prevent fear, enough seriousness to support honest screening and emergency readiness.",
+    "technician_evidence_note": "Modern safety guidelines and a large clinical survey support low absolute seizure risk while emphasizing risk screening and preparedness. Technicians should know the emergency protocol rather than improvise.",
+    "technician_checklist": [
+      "Ask about seizure history, medication changes, sleep deprivation, substance changes, and neurological events.",
+      "Know stop-stimulation, patient-protection, emergency-call, and documentation steps.",
+      "Do not minimize seizure-risk questions; escalate positive screens before stimulation."
+    ],
+    "follow_ups": [
+      {
+        "question": "What would you do if I had a seizure?",
+        "answer": "We would stop stimulation, keep you safe from injury, follow the clinic emergency protocol, and get medical help.",
+        "route_when": "Technicians should follow the clinic seizure-response SOP exactly."
+      },
+      {
+        "question": "Does poor sleep increase risk?",
+        "answer": "Poor sleep can be part of the risk picture, so tell us if you barely slept or had a major sleep change.",
+        "route_when": "Escalate severe sleep deprivation, especially with medication, substance, or neurologic changes."
+      },
+      {
+        "question": "Can TMS cause epilepsy?",
+        "answer": "A TMS-associated seizure is rare and does not automatically mean a person has epilepsy. Any seizure-like event needs medical evaluation.",
+        "route_when": "Route seizure-like events or neurologic symptoms to medical evaluation immediately."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "34133991",
+      "9474057"
+    ]
+  },
+  {
+    "claim_id": "FAQ-019",
+    "expanded_patient_answer": "TMS makes a loud clicking sound because of rapid coil discharge. Ear protection is recommended even if the sound does not bother you, because it is a simple way to reduce noise exposure. If you use hearing aids, cochlear implants, have tinnitus, ear pain, or hearing changes, tell the team before treatment so the clinic can follow its safety process.",
+    "why_it_matters": "Ear protection is easy to skip when the room feels routine. Framing it as standard safety work supports consistency.",
+    "technician_evidence_note": "Safety guidelines recommend hearing protection; earlier human auditory testing found no evidence of hearing loss in studied exposures, but current practice still treats ear protection as a routine precaution.",
+    "technician_checklist": [
+      "Confirm properly fitted ear protection before stimulation begins.",
+      "Ask about hearing aids, cochlear implants, tinnitus, ear pain, or recent hearing changes.",
+      "Document refusal, intolerance, or exceptions according to clinic policy."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can I use my own earplugs?",
+        "answer": "Ask the clinic team. The important thing is that hearing protection meets the clinic's requirements and fits properly.",
+        "route_when": "Follow clinic policy for acceptable hearing protection."
+      },
+      {
+        "question": "Do I need earplugs if it is not loud to me?",
+        "answer": "Yes, if that is clinic policy. Ear protection is a routine precaution for the coil click.",
+        "route_when": "Document refusal or inability to tolerate ear protection."
+      },
+      {
+        "question": "What if I have tinnitus or hearing aids?",
+        "answer": "Tell us before treatment. The clinical team may need to review the safest way to manage hearing protection and devices.",
+        "route_when": "Escalate cochlear implants, hearing devices, tinnitus changes, ear pain, or hearing complaints."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "1549231"
+    ]
+  },
+  {
+    "claim_id": "FAQ-020",
+    "expanded_patient_answer": "Some patients worry about feeling too energized or activated. Mania or hypomania appears uncommon, but it is important to report early because it can affect safety and treatment decisions. Warning signs include needing much less sleep without feeling tired, unusually elevated or irritable mood, racing thoughts, impulsive behavior, agitation, risky decisions, or feeling very unlike yourself. Technicians should document and escalate rather than interpreting these symptoms independently.",
+    "why_it_matters": "Activation symptoms can be mistaken for ordinary improvement unless technicians ask specifically about sleep, impulsivity, irritability, and behavior change.",
+    "technician_evidence_note": "Safety and depression-treatment guidelines flag manic or mixed symptom emergence as clinically important. Evidence is not strong enough for a universal risk estimate, so screening and escalation are the defensible workflow.",
+    "technician_checklist": [
+      "Ask about decreased need for sleep, agitation, irritability, impulsivity, and risky behavior.",
+      "Differentiate improved mood from unsafe activation by focusing on sleep and behavior change.",
+      "Escalate suspected manic, hypomanic, mixed, psychotic, or safety-risk symptoms before treatment."
+    ],
+    "follow_ups": [
+      {
+        "question": "Is feeling more energetic a good sign?",
+        "answer": "It can be, but we also ask about sleep, impulsivity, agitation, and feeling unlike yourself to make sure it is safe improvement.",
+        "route_when": "Escalate decreased need for sleep, risky behavior, or marked agitation."
+      },
+      {
+        "question": "What if I have bipolar disorder?",
+        "answer": "That should be part of the clinician's treatment plan and monitoring. Tell us about any mood switching or activation symptoms right away.",
+        "route_when": "Route bipolar-spectrum history or medication concerns to the prescriber."
+      },
+      {
+        "question": "Should I skip treatment if I feel activated?",
+        "answer": "Tell the clinic before the session. The clinician can decide whether treatment should proceed or be adjusted.",
+        "route_when": "Escalate same-day activation concerns before stimulation."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "28541649",
+      "31901449"
+    ]
+  },
+  {
+    "claim_id": "FAQ-021",
+    "expanded_patient_answer": "TMS and ECT are different treatments. TMS is delivered while you are awake, usually in an outpatient chair, and it is not designed to cause a seizure. ECT uses anesthesia and a medically induced seizure and is used for different clinical situations. The point is not that one treatment is 'good' and the other is 'bad'; it is that your TMS appointment should not be imagined as ECT.",
+    "why_it_matters": "Fear of ECT can cause patients to arrive anxious or avoid treatment. Technicians need a respectful comparison that reduces fear without stigmatizing ECT.",
+    "technician_evidence_note": "Depression consensus documents describe rTMS as an outpatient, nonconvulsive treatment course. Safety guidelines distinguish TMS risks from intentionally induced therapeutic seizure procedures.",
+    "technician_checklist": [
+      "State that TMS is awake, outpatient, and nonconvulsive.",
+      "Avoid saying ECT is bad, dangerous, or obsolete.",
+      "Route comparative treatment-selection questions to the clinician."
+    ],
+    "follow_ups": [
+      {
+        "question": "Will I need anesthesia?",
+        "answer": "No. Standard TMS is done while you are awake and seated.",
+        "route_when": "Route sedation, panic, or medical tolerance concerns to clinical staff."
+      },
+      {
+        "question": "Will TMS erase my memory?",
+        "answer": "TMS is not ECT and is not designed to cause a seizure. If you have cognitive concerns, tell the clinician so they can discuss risks in your case.",
+        "route_when": "Escalate new confusion, cognitive change, or neurological symptoms."
+      },
+      {
+        "question": "Why did my doctor choose TMS instead of ECT?",
+        "answer": "That is a treatment-selection question for your doctor. We can explain what happens during TMS, but the clinician should explain why it was recommended for you.",
+        "route_when": "Route comparative efficacy or indication questions to the prescriber."
+      }
+    ],
+    "evidence_pmids": [
+      "28541649",
+      "27090022",
+      "33243615"
+    ]
+  },
+  {
+    "claim_id": "FAQ-022",
+    "expanded_patient_answer": "The clinic asks about implants, devices, and metal because magnetic pulses can interact with electronic, ferromagnetic, or conductive materials depending on the device, location, and stimulation setup. Dental fillings are usually treated differently from implanted neurostimulators, cochlear implants, aneurysm clips, shrapnel, or implanted pumps, but technicians should not make that clearance decision casually. The safest answer is to collect details and have the clinical team review them before treatment.",
+    "why_it_matters": "Implant questions are common and high-stakes. The technician must avoid both unnecessary alarm and unsafe reassurance.",
+    "technician_evidence_note": "Safety guidelines and implant-focused reports emphasize device type, location relative to the coil, electronics, ferromagnetic material, and manufacturer guidance. Documentation quality determines whether clinicians can clear safely.",
+    "technician_checklist": [
+      "Ask what the implant or metal is, where it is, when it was placed, and whether documentation is available.",
+      "Flag electronic implants, neurostimulators, cochlear implants, intracranial metal, shrapnel, aneurysm clips, and unknown devices.",
+      "Do not proceed on technician judgment alone when clinic policy requires clinician clearance."
+    ],
+    "follow_ups": [
+      {
+        "question": "Do dental fillings count?",
+        "answer": "Dental work is common, but still tell the clinic what you have. The team will follow its screening rules.",
+        "route_when": "Escalate if the patient reports unusual dental hardware, facial metal, or uncertainty."
+      },
+      {
+        "question": "What if I do not know the device model?",
+        "answer": "Tell us as much as you know. The clinic may ask for an implant card, operative note, manufacturer information, or clinician review before treatment.",
+        "route_when": "Hold or escalate when required device details are missing."
+      },
+      {
+        "question": "Can I be treated with a pacemaker or stimulator?",
+        "answer": "That requires clinical review. Safety depends on the device, where it is, and the treatment setup.",
+        "route_when": "Route all implanted electronic device questions to the clinician or medical director."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "9803953",
+      "9918361"
+    ]
+  },
+  {
+    "claim_id": "FAQ-023",
+    "expanded_patient_answer": "Some medical situations need extra review rather than a quick yes or no. Pregnancy, adolescence, older age, epilepsy, neurological conditions, implanted devices, medication complexity, bipolar-spectrum illness, and cognitive or frailty concerns may affect screening or monitoring. A technician can collect information and explain the clinic process, but clearance and individualized risk discussion belong to the treating clinician or medical director.",
+    "why_it_matters": "Patients often ask technicians for permission because technicians are accessible. This FAQ protects scope while giving a helpful next step.",
+    "technician_evidence_note": "Guidelines address patient-specific risk factors, and newer reviews/meta-analyses show evidence is evolving in youth and late-life depression. The safest training stance is structured escalation, not broad reassurance.",
+    "technician_checklist": [
+      "Identify whether the question is pregnancy, age, neurological history, implant, medication, or psychiatric-risk related.",
+      "Collect concise details without offering clearance or exclusion.",
+      "Route through prescriber, medical director, consent/guardian workflow, or emergency pathway as appropriate."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can I do TMS while pregnant?",
+        "answer": "That needs clinician review. Tell the clinic right away if you are pregnant, might be pregnant, or your pregnancy status changes.",
+        "route_when": "Route pregnancy or pregnancy-status changes to clinician review before treatment."
+      },
+      {
+        "question": "Is TMS safe for older adults?",
+        "answer": "Age alone does not answer the question. The team reviews medical history, cognition, medications, frailty, and the treatment plan.",
+        "route_when": "Escalate cognitive impairment, fall risk, frailty, or complex medical history."
+      },
+      {
+        "question": "Can teenagers receive TMS?",
+        "answer": "Youth treatment uses special consent, safety, and protocol considerations. The clinician should explain whether it is appropriate.",
+        "route_when": "Route pediatric, adolescent, guardian, and consent questions to clinical leadership."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "19833552",
+      "40865772",
+      "40429604"
+    ]
+  },
+  {
+    "claim_id": "FAQ-024",
+    "expanded_patient_answer": "Mild headache can occur with TMS and is often temporary, but the pattern matters. Tell the team when it started, how severe it is, how long it lasts, whether it is new for you, and whether it comes with neurologic symptoms, fainting, fever, visual changes, confusion, or severe neck pain. Technicians can document and use clinic-approved comfort measures, but medication advice and concerning symptoms should be routed to clinical staff.",
+    "why_it_matters": "Headache is common enough to normalize, but severe or unusual headache is also a possible safety signal. The script must not dismiss patient reports.",
+    "technician_evidence_note": "Guidelines and consensus recommendations describe headache as a common tolerability issue. Training should focus on severity, change from baseline, associated symptoms, and documentation of actions taken.",
+    "technician_checklist": [
+      "Ask onset, severity, location, duration, baseline history, and associated symptoms.",
+      "Use only clinic-approved comfort steps and document response.",
+      "Escalate severe, unusual, persistent, worsening, post-fall, or neurologic-symptom-associated headache."
+    ],
+    "follow_ups": [
+      {
+        "question": "Can I take ibuprofen or acetaminophen?",
+        "answer": "Medication advice should come from the clinical team or your prescriber. We can document what you usually take and ask the clinician.",
+        "route_when": "Route all individualized medication recommendations to licensed staff."
+      },
+      {
+        "question": "Should I report a mild headache?",
+        "answer": "Yes. Reporting it helps the team track tolerability and patterns, even if it is mild.",
+        "route_when": "Document mild headache; escalate if pattern changes or worsens."
+      },
+      {
+        "question": "When is headache urgent?",
+        "answer": "Severe, sudden, unusual, worsening, or neurologic-symptom-associated headache should be escalated right away.",
+        "route_when": "Use urgent medical or emergency pathway for red-flag symptoms."
+      }
+    ],
+    "evidence_pmids": [
+      "33243615",
+      "28541649",
+      "27090022"
+    ]
+  },
+  {
+    "claim_id": "FAQ-025",
+    "expanded_patient_answer": "Some patients later discuss maintenance sessions, booster sessions, retreatment after relapse, or another full course. There is not one universal schedule that applies to everyone. The plan depends on how you responded, how long benefit lasts, symptoms, side effects, diagnosis, insurance or authorization, and clinician judgment. Technicians can document questions and changes, but they should not promise maintenance or set expectations for a specific schedule.",
+    "why_it_matters": "End-of-course questions can become accidental promises. Technicians need a script that validates hope while preserving clinician decision-making and payer realities.",
+    "technician_evidence_note": "Consensus documents discuss continuation, maintenance, and retreatment as clinically relevant but less standardized than acute-course delivery. Evidence and coverage vary across setting and indication.",
+    "technician_checklist": [
+      "Document response, residual symptoms, relapse concerns, and patient questions near course completion.",
+      "Avoid giving a universal booster or maintenance schedule.",
+      "Route maintenance, retreatment, authorization, and relapse-prevention planning to the clinician."
+    ],
+    "follow_ups": [
+      {
+        "question": "Will benefits last forever?",
+        "answer": "Duration varies. The clinician can discuss relapse prevention, follow-up, and whether another treatment plan is appropriate later.",
+        "route_when": "Route prognosis and relapse-prevention questions to clinical staff."
+      },
+      {
+        "question": "Can I schedule boosters now?",
+        "answer": "That depends on the treatment plan, symptoms, response, and coverage. The clinician should decide whether boosters are appropriate.",
+        "route_when": "Escalate all booster or maintenance scheduling requests."
+      },
+      {
+        "question": "What if symptoms come back months later?",
+        "answer": "Contact the clinic or your treating clinician. They may reassess symptoms and discuss options, which could include retreatment or other care.",
+        "route_when": "Route relapse, suicidality, or functional decline to the clinical pathway."
+      }
+    ],
+    "evidence_pmids": [
+      "28541649",
+      "27090022"
+    ]
+  }
+]
