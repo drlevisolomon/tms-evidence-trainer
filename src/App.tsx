@@ -1,9 +1,11 @@
 import {
   Activity,
   AlertTriangle,
+  ArrowRight,
   BadgeCheck,
   BookMarked,
   BookOpen,
+  Brain,
   Check,
   CheckCircle2,
   ClipboardCheck,
@@ -12,18 +14,30 @@ import {
   Database,
   FileText,
   Filter,
+  GraduationCap,
   HelpCircle,
   Library,
   Link2,
   Search,
+  RotateCcw,
   Target,
   MessageCircleQuestion,
   UserRound,
+  XCircle,
 } from "lucide-react";
 import { useMemo, useState, type ReactNode } from "react";
 import { claimMatches, claims, modules, parseSources } from "./data/claims";
 import { faqExpansionMatches, getFaqExpansion } from "./data/faqExpansions";
-import type { Claim, EvidenceStrength, FAQExpansion, SourceLink, TabId } from "./types";
+import { practiceQuestions } from "./data/practiceQuestions";
+import type {
+  Claim,
+  EvidenceStrength,
+  FAQExpansion,
+  PracticeConfidence,
+  PracticeQuestion,
+  SourceLink,
+  TabId,
+} from "./types";
 
 const tabs: Array<{ id: TabId; label: string; icon: typeof BookOpen }> = [
   { id: "learn", label: "Learn", icon: BookOpen },
@@ -294,39 +308,419 @@ function LearnView({
         })}
       </div>
 
-      <div className="learning-panel">
-        <div className="section-heading">
-          <BookOpen size={20} />
-          <h2>Module Sequence</h2>
-        </div>
-        <div className="module-sequence">
-          {modules.map((module, index) => {
-            const moduleClaims = claims.filter((claim) => claim.module === module);
-            return (
-              <article className="sequence-item" key={module}>
-                <span className="sequence-index">{index + 1}</span>
-                <div>
-                  <h3>{module}</h3>
-                  <p>{moduleLead(module)}</p>
-                  <div className="mini-list">
-                    {moduleClaims.slice(0, 3).map((claim) => (
-                      <button
-                        key={claim.claim_id}
-                        onClick={() => {
-                          onSelectModule(module);
-                          onSelectClaim(claim.claim_id);
-                          setTab("ask");
-                        }}
-                        type="button"
-                      >
-                        {claim.question}
-                      </button>
-                    ))}
+      <div className="learn-main">
+        <PracticeLab
+          onSelectClaim={onSelectClaim}
+          onSelectModule={onSelectModule}
+          setTab={setTab}
+        />
+
+        <div className="learning-panel">
+          <div className="section-heading">
+            <BookOpen size={20} />
+            <h2>Module Sequence</h2>
+          </div>
+          <div className="module-sequence">
+            {modules.map((module, index) => {
+              const moduleClaims = claims.filter((claim) => claim.module === module);
+              return (
+                <article className="sequence-item" key={module}>
+                  <span className="sequence-index">{index + 1}</span>
+                  <div>
+                    <h3>{module}</h3>
+                    <p>{moduleLead(module)}</p>
+                    <div className="mini-list">
+                      {moduleClaims.slice(0, 3).map((claim) => (
+                        <button
+                          key={claim.claim_id}
+                          onClick={() => {
+                            onSelectModule(module);
+                            onSelectClaim(claim.claim_id);
+                            setTab("ask");
+                          }}
+                          type="button"
+                        >
+                          {claim.question}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+type PracticeAnswer = {
+  choiceId: string;
+  confidence: PracticeConfidence;
+};
+
+const confidenceOptions: Array<{
+  id: PracticeConfidence;
+  label: string;
+  hint: string;
+}> = [
+  { id: "low", label: "Low", hint: "Mostly guessing" },
+  { id: "medium", label: "Medium", hint: "Narrowed it down" },
+  { id: "high", label: "High", hint: "Very sure" },
+];
+
+function PracticeLab({
+  onSelectClaim,
+  onSelectModule,
+  setTab,
+}: {
+  onSelectClaim: (claimId: string) => void;
+  onSelectModule: (module: string) => void;
+  setTab: (tab: TabId) => void;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, PracticeAnswer>>({});
+  const [drafts, setDrafts] = useState<
+    Record<string, { choiceId?: string; confidence?: PracticeConfidence }>
+  >({});
+
+  const currentQuestion = (practiceQuestions[currentIndex] ?? practiceQuestions[0]) as PracticeQuestion;
+  const currentDraft = drafts[currentQuestion.id] ?? {};
+  const currentAnswer = answers[currentQuestion.id];
+  const selectedChoiceId = currentAnswer?.choiceId ?? currentDraft.choiceId ?? "";
+  const selectedConfidence = currentAnswer?.confidence ?? currentDraft.confidence ?? null;
+  const isSubmitted = Boolean(currentAnswer);
+  const answeredCount = Object.keys(answers).length;
+  const correctCount = practiceQuestions.filter(
+    (question) => answers[question.id]?.choiceId === question.correct_choice_id,
+  ).length;
+  const missedQuestions = practiceQuestions.filter((question) => {
+    const answer = answers[question.id];
+    return answer && answer.choiceId !== question.correct_choice_id;
+  });
+  const highConfidenceMisses = missedQuestions.filter(
+    (question) => answers[question.id]?.confidence === "high",
+  );
+  const unansweredQuestions = practiceQuestions.filter((question) => !answers[question.id]);
+  const reviewQueue = missedQuestions.length ? missedQuestions : unansweredQuestions;
+  const accuracy = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 0;
+  const canSubmit = Boolean(currentDraft.choiceId && currentDraft.confidence && !isSubmitted);
+
+  function updateDraft(questionId: string, next: { choiceId?: string; confidence?: PracticeConfidence }) {
+    setDrafts((previous) => ({
+      ...previous,
+      [questionId]: {
+        ...previous[questionId],
+        ...next,
+      },
+    }));
+  }
+
+  function submitAnswer() {
+    if (!currentDraft.choiceId || !currentDraft.confidence || isSubmitted) return;
+    setAnswers((previous) => ({
+      ...previous,
+      [currentQuestion.id]: {
+        choiceId: currentDraft.choiceId as string,
+        confidence: currentDraft.confidence as PracticeConfidence,
+      },
+    }));
+  }
+
+  function goToQuestion(index: number) {
+    setCurrentIndex(Math.max(0, Math.min(practiceQuestions.length - 1, index)));
+  }
+
+  function openClaim(claimId: string) {
+    const claim = claims.find((item) => item.claim_id === claimId);
+    if (!claim) return;
+    onSelectModule(claim.module);
+    onSelectClaim(claim.claim_id);
+    setTab("ask");
+  }
+
+  function resetPractice() {
+    setAnswers({});
+    setDrafts({});
+    setCurrentIndex(0);
+  }
+
+  const nextIndex = (currentIndex + 1) % practiceQuestions.length;
+  const sourceClaims = currentQuestion.claim_ids
+    .map((claimId) => claims.find((claim) => claim.claim_id === claimId))
+    .filter(Boolean) as Claim[];
+
+  return (
+    <section className="practice-panel" aria-label="Technician practice lab">
+      <div className="practice-hero">
+        <div>
+          <div className="section-heading">
+            <GraduationCap size={21} />
+            <h2>Technician Practice Lab</h2>
+          </div>
+          <p>
+            Source-anchored single-best-answer questions for FAQ coaching, safety screening,
+            workflow judgment, and evidence-boundary language.
+          </p>
+        </div>
+        <div className="practice-metrics" aria-label="Practice progress">
+          <span>
+            <strong>{answeredCount}/{practiceQuestions.length}</strong>
+            answered
+          </span>
+          <span>
+            <strong>{answeredCount ? `${accuracy}%` : "--"}</strong>
+            accuracy
+          </span>
+          <span className={highConfidenceMisses.length ? "metric-alert" : ""}>
+            <strong>{highConfidenceMisses.length}</strong>
+            high-confidence misses
+          </span>
+        </div>
+      </div>
+
+      <div className="practice-body">
+        <aside className="practice-question-strip" aria-label="Practice question index">
+          {practiceQuestions.map((question, index) => {
+            const answer = answers[question.id];
+            const isCorrect = answer?.choiceId === question.correct_choice_id;
+            return (
+              <button
+                className={[
+                  "practice-index-button",
+                  currentQuestion.id === question.id ? "active" : "",
+                  answer ? (isCorrect ? "correct" : "missed") : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                key={question.id}
+                onClick={() => goToQuestion(index)}
+                type="button"
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <small>{question.blueprint}</small>
+              </button>
             );
           })}
+        </aside>
+
+        <article className="practice-card">
+          <div className="practice-card-top">
+            <span>{currentQuestion.id}</span>
+            <span>{currentQuestion.module}</span>
+            <span>{currentQuestion.prompt}</span>
+          </div>
+          <h3>{currentQuestion.stem}</h3>
+
+          <div className="choice-list" role="radiogroup" aria-label="Answer choices">
+            {currentQuestion.choices.map((choice) => {
+              const isSelected = selectedChoiceId === choice.id;
+              const isCorrectChoice = choice.id === currentQuestion.correct_choice_id;
+              const choiceState = isSubmitted
+                ? isCorrectChoice
+                  ? "correct"
+                  : isSelected
+                    ? "incorrect"
+                    : ""
+                : isSelected
+                  ? "selected"
+                  : "";
+              return (
+                <button
+                  aria-checked={isSelected}
+                  className={["choice-option", choiceState].filter(Boolean).join(" ")}
+                  disabled={isSubmitted}
+                  key={choice.id}
+                  onClick={() => updateDraft(currentQuestion.id, { choiceId: choice.id })}
+                  role="radio"
+                  type="button"
+                >
+                  <span>{choice.id}</span>
+                  <p>{choice.text}</p>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="confidence-block">
+            <span className="practice-label">Confidence before reveal</span>
+            <div className="confidence-row">
+              {confidenceOptions.map((option) => (
+                <button
+                  className={selectedConfidence === option.id ? "confidence-chip active" : "confidence-chip"}
+                  disabled={isSubmitted}
+                  key={option.id}
+                  onClick={() => updateDraft(currentQuestion.id, { confidence: option.id })}
+                  type="button"
+                >
+                  <strong>{option.label}</strong>
+                  <small>{option.hint}</small>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="practice-actions">
+            <button className="primary-action" disabled={!canSubmit} onClick={submitAnswer} type="button">
+              <CheckCircle2 size={17} />
+              Submit answer
+            </button>
+            <button className="quiet-action" onClick={() => goToQuestion(nextIndex)} type="button">
+              <ArrowRight size={17} />
+              Next question
+            </button>
+            <button className="quiet-action" onClick={resetPractice} type="button">
+              <RotateCcw size={16} />
+              Reset
+            </button>
+          </div>
+
+          {currentAnswer ? (
+            <PracticeFeedback
+              answer={currentAnswer}
+              onOpenClaim={openClaim}
+              question={currentQuestion}
+            />
+          ) : null}
+        </article>
+
+        <aside className="practice-review-panel">
+          <div className="section-heading">
+            <Brain size={19} />
+            <h2>Review Signal</h2>
+          </div>
+          <p>
+            {highConfidenceMisses.length
+              ? "High-confidence misses are the first repair target. Revisit the source claim and name the clue that should have changed the answer."
+              : answeredCount
+                ? "Calibration looks steady so far. Keep marking confidence before reveal so misses can be sorted by judgment versus knowledge."
+                : "Start with a confidence mark before reveal. The review queue will separate misses, uncertainty, and unanswered concepts."}
+          </p>
+
+          <div className="review-stack">
+            {(reviewQueue.length ? reviewQueue : practiceQuestions).slice(0, 4).map((question) => {
+              const answer = answers[question.id];
+              const status = !answer
+                ? "Unanswered"
+                : answer.choiceId === question.correct_choice_id
+                  ? "Correct"
+                  : answer.confidence === "high"
+                    ? "High-confidence miss"
+                    : "Missed";
+              return (
+                <button
+                  className="review-row"
+                  key={`review-${question.id}`}
+                  onClick={() => goToQuestion(practiceQuestions.findIndex((item) => item.id === question.id))}
+                  type="button"
+                >
+                  <span>{status}</span>
+                  <strong>{question.prompt}</strong>
+                  <small>{question.blueprint}</small>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="source-claim-box">
+            <span className="practice-label">Current source claims</span>
+            {sourceClaims.map((claim) => (
+              <button key={claim.claim_id} onClick={() => openClaim(claim.claim_id)} type="button">
+                <strong>{claim.claim_id}</strong>
+                <span>{claim.question}</span>
+              </button>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function PracticeFeedback({
+  answer,
+  onOpenClaim,
+  question,
+}: {
+  answer: PracticeAnswer;
+  onOpenClaim: (claimId: string) => void;
+  question: PracticeQuestion;
+}) {
+  const isCorrect = answer.choiceId === question.correct_choice_id;
+  const selectedChoice = question.choices.find((choice) => choice.id === answer.choiceId);
+  const correctChoice = question.choices.find((choice) => choice.id === question.correct_choice_id);
+
+  return (
+    <section className={isCorrect ? "practice-feedback correct" : "practice-feedback incorrect"}>
+      <div className="feedback-status">
+        {isCorrect ? <CheckCircle2 size={21} /> : <XCircle size={21} />}
+        <div>
+          <strong>{isCorrect ? "Correct" : "Review this one"}</strong>
+          <span>
+            Selected {answer.choiceId}
+            {selectedChoice ? `: ${selectedChoice.text}` : ""} - Confidence {answer.confidence}
+          </span>
+        </div>
+      </div>
+
+      <div className="feedback-grid">
+        <div>
+          <span className="practice-label">Explanation</span>
+          <p>{question.explanation}</p>
+        </div>
+        <div>
+          <span className="practice-label">Key clue</span>
+          <p>{question.key_clue}</p>
+        </div>
+      </div>
+
+      <div className="choice-analysis">
+        <span className="practice-label">Choice analysis</span>
+        {question.choices.map((choice) => (
+          <div
+            className={[
+              "analysis-row",
+              choice.id === question.correct_choice_id ? "correct" : "",
+              choice.id === answer.choiceId && !isCorrect ? "selected-miss" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            key={`analysis-${choice.id}`}
+          >
+            <strong>{choice.id}</strong>
+            <p>{question.choice_analysis[choice.id]}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="objective-box">
+        <div>
+          <span className="practice-label">Educational objective</span>
+          <p>{question.educational_objective}</p>
+        </div>
+        <div>
+          <span className="practice-label">Technician takeaway</span>
+          <p>{question.technician_takeaway}</p>
+        </div>
+      </div>
+
+      <div className="practice-source-links">
+        <span>
+          Correct answer: {question.correct_choice_id}
+          {correctChoice ? `: ${correctChoice.text}` : ""}
+        </span>
+        <div>
+          {question.claim_ids.map((claimId) => (
+            <button key={claimId} onClick={() => onOpenClaim(claimId)} type="button">
+              Review {claimId}
+            </button>
+          ))}
+          {question.source_pmids.map((pmid) => (
+            <a href={`https://pubmed.ncbi.nlm.nih.gov/${pmid}/`} key={pmid} rel="noreferrer" target="_blank">
+              PMID {pmid}
+            </a>
+          ))}
         </div>
       </div>
     </section>

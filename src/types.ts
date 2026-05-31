@@ -43,3 +43,27 @@ export type FAQExpansion = {
   follow_ups: FAQFollowUp[];
   evidence_pmids: string[];
 };
+
+export type PracticeConfidence = "low" | "medium" | "high";
+
+export type PracticeChoice = {
+  id: string;
+  text: string;
+};
+
+export type PracticeQuestion = {
+  id: string;
+  module: string;
+  blueprint: string;
+  claim_ids: string[];
+  source_pmids: string[];
+  prompt: string;
+  stem: string;
+  choices: PracticeChoice[];
+  correct_choice_id: string;
+  explanation: string;
+  key_clue: string;
+  choice_analysis: Record<string, string>;
+  educational_objective: string;
+  technician_takeaway: string;
+};
