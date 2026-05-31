@@ -420,8 +420,8 @@ a {
 }
 
 .question-list {
-  max-height: calc(100vh - 392px);
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .claim-row {
