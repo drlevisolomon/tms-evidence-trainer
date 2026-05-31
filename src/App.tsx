@@ -8,6 +8,8 @@ import {
   Brain,
   Check,
   CheckCircle2,
+  ChevronDown,
+  ChevronRight,
   ClipboardCheck,
   ClipboardList,
   Copy,
@@ -20,6 +22,7 @@ import {
   Link2,
   Search,
   RotateCcw,
+  SlidersHorizontal,
   Target,
   MessageCircleQuestion,
   UserRound,
@@ -284,42 +287,54 @@ function LearnView({
 }) {
   return (
     <section className="learn-grid">
-      <div className="module-rail">
-        {moduleCounts.map((module) => {
-          const moduleClaims = claims.filter((claim) => claim.module === module.module);
-          return (
-            <button
-              className="module-row"
-              key={module.module}
-              onClick={() => {
-                onSelectModule(module.module);
-                onSelectClaim(moduleClaims[0].claim_id);
-                setTab("ask");
-              }}
-              type="button"
-            >
-              <span>
-                <strong>{module.module}</strong>
-                <small>{module.strong} strong claims</small>
-              </span>
-              <b>{module.count}</b>
-            </button>
-          );
-        })}
-      </div>
+      <PracticeLab
+        onSelectClaim={onSelectClaim}
+        onSelectModule={onSelectModule}
+        setTab={setTab}
+      />
 
-      <div className="learn-main">
-        <PracticeLab
-          onSelectClaim={onSelectClaim}
-          onSelectModule={onSelectModule}
-          setTab={setTab}
-        />
-
-        <div className="learning-panel">
-          <div className="section-heading">
+      <details className="learn-drawer">
+        <summary>
+          <span className="section-heading">
             <BookOpen size={20} />
+            <h2>Browse Evidence Modules</h2>
+          </span>
+          <ChevronDown size={18} />
+        </summary>
+        <div className="module-rail">
+          {moduleCounts.map((module) => {
+            const moduleClaims = claims.filter((claim) => claim.module === module.module);
+            return (
+              <button
+                className="module-row"
+                key={module.module}
+                onClick={() => {
+                  onSelectModule(module.module);
+                  onSelectClaim(moduleClaims[0].claim_id);
+                  setTab("ask");
+                }}
+                type="button"
+              >
+                <span>
+                  <strong>{module.module}</strong>
+                  <small>{module.strong} strong claims</small>
+                </span>
+                <b>{module.count}</b>
+              </button>
+            );
+          })}
+        </div>
+      </details>
+
+      <details className="learn-drawer">
+        <summary>
+          <span className="section-heading">
+            <ClipboardList size={20} />
             <h2>Module Sequence</h2>
-          </div>
+          </span>
+          <ChevronDown size={18} />
+        </summary>
+        <div className="learning-panel">
           <div className="module-sequence">
             {modules.map((module, index) => {
               const moduleClaims = claims.filter((claim) => claim.module === module);
@@ -350,7 +365,7 @@ function LearnView({
             })}
           </div>
         </div>
-      </div>
+      </details>
     </section>
   );
 }
@@ -370,6 +385,8 @@ const confidenceOptions: Array<{
   { id: "high", label: "High", hint: "Very sure" },
 ];
 
+const reviewSectionLabels = ["Answer", "Clue", "Choices", "Objective", "Sources"];
+
 function PracticeLab({
   onSelectClaim,
   onSelectModule,
@@ -384,6 +401,14 @@ function PracticeLab({
   const [drafts, setDrafts] = useState<
     Record<string, { choiceId?: string; confidence?: PracticeConfidence }>
   >({});
+  const [activeReviewIndex, setActiveReviewIndex] = useState(0);
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    answer: true,
+    clue: false,
+    choices: false,
+    objective: false,
+    sources: false,
+  });
 
   const currentQuestion = (practiceQuestions[currentIndex] ?? practiceQuestions[0]) as PracticeQuestion;
   const currentDraft = drafts[currentQuestion.id] ?? {};
@@ -430,6 +455,7 @@ function PracticeLab({
 
   function goToQuestion(index: number) {
     setCurrentIndex(Math.max(0, Math.min(practiceQuestions.length - 1, index)));
+    setActiveReviewIndex(0);
   }
 
   function openClaim(claimId: string) {
@@ -444,6 +470,26 @@ function PracticeLab({
     setAnswers({});
     setDrafts({});
     setCurrentIndex(0);
+    setActiveReviewIndex(0);
+    setExpandedSections({
+      answer: true,
+      clue: false,
+      choices: false,
+      objective: false,
+      sources: false,
+    });
+  }
+
+  function selectReviewSection(index: number) {
+    const sectionIds = ["answer", "clue", "choices", "objective", "sources"];
+    const nextIndex = Math.max(0, Math.min(sectionIds.length - 1, index));
+    const sectionId = sectionIds[nextIndex] ?? "answer";
+    setActiveReviewIndex(nextIndex);
+    setExpandedSections((previous) => ({ ...previous, [sectionId]: true }));
+  }
+
+  function toggleReviewSection(sectionId: string) {
+    setExpandedSections((previous) => ({ ...previous, [sectionId]: !previous[sectionId] }));
   }
 
   const nextIndex = (currentIndex + 1) % practiceQuestions.length;
@@ -480,31 +526,50 @@ function PracticeLab({
         </div>
       </div>
 
-      <div className="practice-body">
-        <aside className="practice-question-strip" aria-label="Practice question index">
-          {practiceQuestions.map((question, index) => {
-            const answer = answers[question.id];
-            const isCorrect = answer?.choiceId === question.correct_choice_id;
-            return (
-              <button
-                className={[
-                  "practice-index-button",
-                  currentQuestion.id === question.id ? "active" : "",
-                  answer ? (isCorrect ? "correct" : "missed") : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-                key={question.id}
-                onClick={() => goToQuestion(index)}
-                type="button"
-              >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <small>{question.blueprint}</small>
-              </button>
-            );
-          })}
-        </aside>
+      <div className="question-slider-panel">
+        <div className="slider-copy">
+          <span className="practice-label">Question</span>
+          <strong>
+            {String(currentIndex + 1).padStart(2, "0")} / {practiceQuestions.length}
+          </strong>
+          <small>{currentQuestion.blueprint}</small>
+        </div>
+        <div className="question-slider-track">
+          <input
+            aria-label="Practice question slider"
+            max={practiceQuestions.length - 1}
+            min={0}
+            onChange={(event) => goToQuestion(Number(event.target.value))}
+            type="range"
+            value={currentIndex}
+          />
+          <div className="slider-ticks" aria-label="Practice question status">
+            {practiceQuestions.map((question, index) => {
+              const answer = answers[question.id];
+              const isCorrect = answer?.choiceId === question.correct_choice_id;
+              return (
+                <button
+                  aria-label={`Question ${index + 1}: ${question.prompt}`}
+                  className={[
+                    "slider-tick",
+                    index === currentIndex ? "active" : "",
+                    answer ? (isCorrect ? "correct" : "missed") : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  key={question.id}
+                  onClick={() => goToQuestion(index)}
+                  type="button"
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
+      <div className="practice-body">
         <article className="practice-card">
           <div className="practice-card-top">
             <span>{currentQuestion.id}</span>
@@ -575,155 +640,249 @@ function PracticeLab({
               Reset
             </button>
           </div>
-
-          {currentAnswer ? (
-            <PracticeFeedback
-              answer={currentAnswer}
-              onOpenClaim={openClaim}
-              question={currentQuestion}
-            />
-          ) : null}
         </article>
 
-        <aside className="practice-review-panel">
-          <div className="section-heading">
-            <Brain size={19} />
-            <h2>Review Signal</h2>
-          </div>
-          <p>
-            {highConfidenceMisses.length
-              ? "High-confidence misses are the first repair target. Revisit the source claim and name the clue that should have changed the answer."
-              : answeredCount
-                ? "Calibration looks steady so far. Keep marking confidence before reveal so misses can be sorted by judgment versus knowledge."
-                : "Start with a confidence mark before reveal. The review queue will separate misses, uncertainty, and unanswered concepts."}
-          </p>
-
-          <div className="review-stack">
-            {(reviewQueue.length ? reviewQueue : practiceQuestions).slice(0, 4).map((question) => {
-              const answer = answers[question.id];
-              const status = !answer
-                ? "Unanswered"
-                : answer.choiceId === question.correct_choice_id
-                  ? "Correct"
-                  : answer.confidence === "high"
-                    ? "High-confidence miss"
-                    : "Missed";
-              return (
-                <button
-                  className="review-row"
-                  key={`review-${question.id}`}
-                  onClick={() => goToQuestion(practiceQuestions.findIndex((item) => item.id === question.id))}
-                  type="button"
-                >
-                  <span>{status}</span>
-                  <strong>{question.prompt}</strong>
-                  <small>{question.blueprint}</small>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="source-claim-box">
-            <span className="practice-label">Current source claims</span>
-            {sourceClaims.map((claim) => (
-              <button key={claim.claim_id} onClick={() => openClaim(claim.claim_id)} type="button">
-                <strong>{claim.claim_id}</strong>
-                <span>{claim.question}</span>
-              </button>
-            ))}
-          </div>
-        </aside>
+        <PracticeReviewDock
+          activeReviewIndex={activeReviewIndex}
+          answer={currentAnswer}
+          expandedSections={expandedSections}
+          highConfidenceMisses={highConfidenceMisses}
+          onOpenClaim={openClaim}
+          onSelectReviewSection={selectReviewSection}
+          onToggleSection={toggleReviewSection}
+          onSelectQuestion={goToQuestion}
+          question={currentQuestion}
+          reviewQueue={reviewQueue.length ? reviewQueue : practiceQuestions}
+          sourceClaims={sourceClaims}
+        />
       </div>
     </section>
   );
 }
 
-function PracticeFeedback({
+function PracticeReviewDock({
+  activeReviewIndex,
   answer,
+  expandedSections,
+  highConfidenceMisses,
   onOpenClaim,
+  onSelectQuestion,
+  onSelectReviewSection,
+  onToggleSection,
   question,
+  reviewQueue,
+  sourceClaims,
 }: {
-  answer: PracticeAnswer;
+  activeReviewIndex: number;
+  answer?: PracticeAnswer;
+  expandedSections: Record<string, boolean>;
+  highConfidenceMisses: PracticeQuestion[];
   onOpenClaim: (claimId: string) => void;
+  onSelectQuestion: (index: number) => void;
+  onSelectReviewSection: (index: number) => void;
+  onToggleSection: (sectionId: string) => void;
   question: PracticeQuestion;
+  reviewQueue: PracticeQuestion[];
+  sourceClaims: Claim[];
 }) {
-  const isCorrect = answer.choiceId === question.correct_choice_id;
-  const selectedChoice = question.choices.find((choice) => choice.id === answer.choiceId);
+  const isCorrect = answer?.choiceId === question.correct_choice_id;
+  const selectedChoice = question.choices.find((choice) => choice.id === answer?.choiceId);
   const correctChoice = question.choices.find((choice) => choice.id === question.correct_choice_id);
+  const reviewSections = [
+    {
+      id: "answer",
+      label: "Answer",
+      body: answer ? (
+        <div className="review-section-body">
+          <p>{question.explanation}</p>
+          <span>
+            Correct answer: {question.correct_choice_id}
+            {correctChoice ? `: ${correctChoice.text}` : ""}
+          </span>
+        </div>
+      ) : (
+        <div className="review-section-body">
+          <p>Explanation available after answer reveal.</p>
+        </div>
+      ),
+    },
+    {
+      id: "clue",
+      label: "Clue",
+      body: (
+        <div className="review-section-body">
+          <p>{question.key_clue}</p>
+        </div>
+      ),
+    },
+    {
+      id: "choices",
+      label: "Choices",
+      body: (
+        <div className="choice-analysis compact">
+          {question.choices.map((choice) => (
+            <div
+              className={[
+                "analysis-row",
+                choice.id === question.correct_choice_id ? "correct" : "",
+                answer && choice.id === answer.choiceId && !isCorrect ? "selected-miss" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              key={`analysis-${choice.id}`}
+            >
+              <strong>{choice.id}</strong>
+              <p>{question.choice_analysis[choice.id]}</p>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      id: "objective",
+      label: "Objective",
+      body: (
+        <div className="review-section-body split">
+          <div>
+            <span className="practice-label">Educational objective</span>
+            <p>{question.educational_objective}</p>
+          </div>
+          <div>
+            <span className="practice-label">Technician takeaway</span>
+            <p>{question.technician_takeaway}</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: "sources",
+      label: "Sources",
+      body: (
+        <div className="review-section-body">
+          <div className="practice-source-links compact">
+            <div>
+              {question.claim_ids.map((claimId) => (
+                <button key={claimId} onClick={() => onOpenClaim(claimId)} type="button">
+                  Review {claimId}
+                </button>
+              ))}
+              {question.source_pmids.map((pmid) => (
+                <a href={`https://pubmed.ncbi.nlm.nih.gov/${pmid}/`} key={pmid} rel="noreferrer" target="_blank">
+                  PMID {pmid}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const signalText = highConfidenceMisses.length
+    ? "High-confidence miss queue active"
+    : answer
+      ? "Review unlocked"
+      : "Awaiting answer";
 
   return (
-    <section className={isCorrect ? "practice-feedback correct" : "practice-feedback incorrect"}>
-      <div className="feedback-status">
-        {isCorrect ? <CheckCircle2 size={21} /> : <XCircle size={21} />}
+    <aside className="practice-review-panel">
+      <div className="review-dock-header">
+        <span className="section-heading">
+          <Brain size={19} />
+          <h2>Review Dock</h2>
+        </span>
+        <small>{signalText}</small>
+      </div>
+
+      <div className={answer ? (isCorrect ? "feedback-status correct" : "feedback-status incorrect") : "feedback-status pending"}>
+        {answer ? isCorrect ? <CheckCircle2 size={21} /> : <XCircle size={21} /> : <SlidersHorizontal size={21} />}
         <div>
-          <strong>{isCorrect ? "Correct" : "Review this one"}</strong>
+          <strong>{answer ? (isCorrect ? "Correct" : "Review this one") : "Ready for response"}</strong>
           <span>
-            Selected {answer.choiceId}
-            {selectedChoice ? `: ${selectedChoice.text}` : ""} - Confidence {answer.confidence}
+            {answer
+              ? `Selected ${answer.choiceId}${selectedChoice ? `: ${selectedChoice.text}` : ""} - Confidence ${answer.confidence}`
+              : "Confidence mark pending."}
           </span>
         </div>
       </div>
 
-      <div className="feedback-grid">
-        <div>
-          <span className="practice-label">Explanation</span>
-          <p>{question.explanation}</p>
+      <div className="section-slider">
+        <div className="section-slider-top">
+          <span className="practice-label">Review Layer</span>
+          <strong>{reviewSectionLabels[activeReviewIndex]}</strong>
         </div>
-        <div>
-          <span className="practice-label">Key clue</span>
-          <p>{question.key_clue}</p>
+        <input
+          aria-label="Review section slider"
+          max={reviewSections.length - 1}
+          min={0}
+          onChange={(event) => onSelectReviewSection(Number(event.target.value))}
+          type="range"
+          value={activeReviewIndex}
+        />
+        <div className="section-slider-labels">
+          {reviewSections.map((section, index) => (
+            <button
+              className={index === activeReviewIndex ? "active" : ""}
+              key={section.id}
+              onClick={() => onSelectReviewSection(index)}
+              type="button"
+            >
+              {section.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      <div className="choice-analysis">
-        <span className="practice-label">Choice analysis</span>
-        {question.choices.map((choice) => (
-          <div
-            className={[
-              "analysis-row",
-              choice.id === question.correct_choice_id ? "correct" : "",
-              choice.id === answer.choiceId && !isCorrect ? "selected-miss" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-            key={`analysis-${choice.id}`}
-          >
-            <strong>{choice.id}</strong>
-            <p>{question.choice_analysis[choice.id]}</p>
-          </div>
+      <div className="review-accordion">
+        {reviewSections.map((section, index) => (
+          <section className="review-section" key={section.id}>
+            <button
+              aria-expanded={Boolean(expandedSections[section.id])}
+              className={index === activeReviewIndex ? "active" : ""}
+              onClick={() => {
+                const isExpanded = Boolean(expandedSections[section.id]);
+                onSelectReviewSection(index);
+                if (isExpanded) onToggleSection(section.id);
+              }}
+              type="button"
+            >
+              <span>{section.label}</span>
+              {expandedSections[section.id] ? <ChevronDown size={17} /> : <ChevronRight size={17} />}
+            </button>
+            {expandedSections[section.id] ? section.body : null}
+          </section>
         ))}
       </div>
 
-      <div className="objective-box">
-        <div>
-          <span className="practice-label">Educational objective</span>
-          <p>{question.educational_objective}</p>
-        </div>
-        <div>
-          <span className="practice-label">Technician takeaway</span>
-          <p>{question.technician_takeaway}</p>
-        </div>
+      <div className="review-stack compact">
+        <span className="practice-label">Repair Queue</span>
+        {reviewQueue.slice(0, 3).map((queuedQuestion) => {
+          const index = practiceQuestions.findIndex((item) => item.id === queuedQuestion.id);
+          return (
+            <button
+              className="review-row"
+              key={`review-${queuedQuestion.id}`}
+              onClick={() => onSelectQuestion(index)}
+              type="button"
+            >
+              <span>{queuedQuestion.id === question.id ? "Current" : "Review next"}</span>
+              <strong>{queuedQuestion.prompt}</strong>
+              <small>{queuedQuestion.blueprint}</small>
+            </button>
+          );
+        })}
       </div>
 
-      <div className="practice-source-links">
-        <span>
-          Correct answer: {question.correct_choice_id}
-          {correctChoice ? `: ${correctChoice.text}` : ""}
-        </span>
-        <div>
-          {question.claim_ids.map((claimId) => (
-            <button key={claimId} onClick={() => onOpenClaim(claimId)} type="button">
-              Review {claimId}
-            </button>
-          ))}
-          {question.source_pmids.map((pmid) => (
-            <a href={`https://pubmed.ncbi.nlm.nih.gov/${pmid}/`} key={pmid} rel="noreferrer" target="_blank">
-              PMID {pmid}
-            </a>
-          ))}
-        </div>
+      <div className="source-claim-box">
+        <span className="practice-label">Current source claims</span>
+        {sourceClaims.map((claim) => (
+          <button key={claim.claim_id} onClick={() => onOpenClaim(claim.claim_id)} type="button">
+            <strong>{claim.claim_id}</strong>
+            <span>{claim.question}</span>
+          </button>
+        ))}
       </div>
-    </section>
+    </aside>
   );
 }
 
